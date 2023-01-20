@@ -16,11 +16,10 @@ public class LinkedList {
 
     public void prepend(int data) {
         Node addNode = new Node(data);
-        if (head == null) {
+      if (head == null) {
             head = addNode;
-            return;
         } else {
-            head.setNext(addNode);
+            addNode.setNext(head);
             head = addNode;
         }
     }
