@@ -1,6 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class LinkedList {
+    //you can record the size additionally but since this is beginning example i leave it here
     Node head;
     Node tail;
     public void pushFront(int data){
@@ -89,6 +92,10 @@ public class LinkedList {
     }
     public int getByIndex(int nth){
         //get nth index out of linked list
+        if(head==null){
+            tail=null;
+            throw new NoSuchElementException();
+        }
         Node tmp=head;
         int index=0;
         while(tmp!=null){
@@ -102,7 +109,11 @@ public class LinkedList {
     }
     //control it when come back from outside code is not over yet
     public int getIndexOfFirstOccurence(int data){
-            Node tmp=head;//additional null control is addable here dont wanna repeat myself as below
+        if(head==null){
+            tail=null;
+            throw new NoSuchElementException();
+        }
+            Node tmp=head;
             int counter=0;
             while(tmp!=null){
                 if(data==tmp.getData()){
@@ -124,5 +135,30 @@ public class LinkedList {
             tmp=tmp.getNext();
         }
         return counter;
+    }
+    public List<Integer> getIndexesOfOccurrence(int data) {
+        Node tmp = head;
+        int counter = 0;
+        List<Integer> indexes = new ArrayList<>();
+
+        if (head == null) {
+            throw new NoSuchElementException("The list is empty.");
+        }
+
+        while (tmp != null) {
+            if (data == tmp.getData()) {
+                indexes.add(counter);
+            }
+            ++counter;
+            tmp = tmp.next;
+        }
+        if(indexes.size()==0){
+            throw new NoSuchElementException("There is no such element");
+        }
+        return indexes;
+    }
+    public void  deleteList(){
+       head=null;
+       tail=null;
     }
 }
