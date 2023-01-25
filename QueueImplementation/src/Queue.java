@@ -27,7 +27,7 @@ public class Queue {
         }
     }
     public int dequeue(){
-        if(isFull()||isEmpty())return Integer.MIN_VALUE;//optionall throw an error
+        if(isEmpty())return Integer.MIN_VALUE;//optionall throw an error
         int data=arr[front];
         if(front==arr.length){
             front=0;
