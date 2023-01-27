@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class BinaryTree {
     private Node root;
 
@@ -65,14 +68,53 @@ public class BinaryTree {
         int rightHeight=findHeight(current.right);
         return Math.max(leftHeight,rightHeight)+1;
     }
-    public void inOrderTraverse(){
-        if(root==null)return;
-        inOrderTraverse(root);
+    public int[] inOrderTraverse() {
+        ArrayList<Integer> result = new ArrayList<>();
+        inOrderTraverse(root, result);
+        int[] arr = new int[result.size()];
+        for (int i = 0; i < result.size(); i++) {
+            arr[i] = result.get(i);
+        }
+        return arr;
     }
-    public void inOrderTraverse(Node current){//dept firsth ,left -parent-right
-        if(root==null)return;
-        inOrderTraverse(current.left);
-        System.out.println(current.data);
-        inOrderTraverse(current.right);
+    private void inOrderTraverse(Node current, ArrayList<Integer> result) {
+        if (current == null) return;
+        inOrderTraverse(current.left, result);
+        result.add(current.data);
+        inOrderTraverse(current.right, result);
     }
+
+    //depth first again this time root left right
+        public int[] preOrderTraverse(){
+            ArrayList<Integer>result=new ArrayList<>();
+            preOrderTraverse(root,result);
+            int[] arr=new int[result.size()];
+            for(int i=0;i<result.size();i++){
+                arr[i]=result.get(i);
+            }
+            return arr;
+        }
+        public void preOrderTraverse(Node current,ArrayList<Integer>result){
+            if(current==null)return;
+            result.add(current.data);
+            preOrderTraverse(current.left,result);
+            preOrderTraverse(current.right,result);
+        }
+        public int[] postOrderTraverse(){
+            ArrayList<Integer> result = new ArrayList<>();
+            postOrderTraverse(root, result);
+            int[] arr = new int[result.size()];
+            for(int i=0; i<result.size(); i++){
+                arr[i] = result.get(i);
+            }
+            return arr;
+        }
+
+        public void postOrderTraverse(Node current, ArrayList<Integer> result){
+            if(current == null) return;
+            postOrderTraverse(current.left, result);
+            postOrderTraverse(current.right, result);
+            result.add(current.data);
+        }
 }
+
