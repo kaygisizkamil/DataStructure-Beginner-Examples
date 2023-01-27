@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class BinaryTree {
     private Node root;
 
-    public void addNode(int data){
+    public void add(int data){
             if(root==null){
                 root=new Node(data);
             }
@@ -38,5 +41,46 @@ public class BinaryTree {
                     add(current.right,data);
                 }
             }
+    }
+    public int findSize(){
+        if(root==null){
+            return 0;
+        }
+        return findSize(root);
+    }
+    public int findSize(Node current){
+        if(current==null){
+            return 0;
+        }
+        int leftSize=findSize(current.left);
+        int rightSize=findSize(current.right);
+        return leftSize+rightSize+1;
+    }
+    public int findHeight(){
+        if(root==null){
+            return 0;
+        }
+        return findHeight(root);
+    }
+    public int findHeight(Node current){
+        if(current==null)return 0;
+        int leftHeight=findHeight(current.left);
+        int rightHeight=findHeight(current.right);
+        return Math.max(leftHeight,rightHeight)+1;
+    }
+    public int[] inOrderTraverse() {
+        ArrayList<Integer> result = new ArrayList<>();
+        inOrderTraverse(root, result);
+        int[] arr = new int[result.size()];
+        for (int i = 0; i < result.size(); i++) {
+            arr[i] = result.get(i);
+        }
+        return arr;
+    }
+    private void inOrderTraverse(Node current, ArrayList<Integer> result) {
+        if (current == null) return;
+        inOrderTraverse(current.left, result);
+        result.add(current.data);
+        inOrderTraverse(current.right, result);
     }
 }
