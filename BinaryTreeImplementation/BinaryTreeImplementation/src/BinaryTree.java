@@ -65,5 +65,14 @@ public class BinaryTree {
         int rightHeight=findHeight(current.right);
         return Math.max(leftHeight,rightHeight)+1;
     }
-
+    public void inOrderTraverse(){
+        if(root==null)return;
+        inOrderTraverse(root);
+    }
+    public void inOrderTraverse(Node current){//dept firsth ,left -parent-right
+        if(root==null)return;
+        inOrderTraverse(current.left);
+        System.out.println(current.data);
+        inOrderTraverse(current.right);
+    }
 }

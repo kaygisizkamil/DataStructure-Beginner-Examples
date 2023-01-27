@@ -1,3 +1,8 @@
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
@@ -25,5 +30,14 @@ public class Main {
         } else {
             System.out.println("findHeight() test failed. Expected: " + expectedHeight + " but got: " + actualHeight);
         }
+
+
+     /*   int[] expectedOrder = new int[] {2, 3, 4, 5, 6, 7, 8};
+        int[] actualOrder = tree.inOrderTraverse();
+        if (Arrays.equals(expectedOrder, actualOrder)) {
+            System.out.println("inOrderTraverse() test passed!");
+        } else {
+            System.out.println("inOrderTraverse() test failed. Expected: " + Arrays.toString(expectedOrder) + " but got: " + Arrays.toString(actualOrder));
+        }*/
     }
 }
