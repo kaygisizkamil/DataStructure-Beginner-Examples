@@ -83,4 +83,22 @@ public class BinaryTree {
         result.add(current.data);
         inOrderTraverse(current.right, result);
     }
+
+    //depth first again this time root left right
+        public int[] preOrderTraverse(){
+            ArrayList<Integer>result=new ArrayList<>();
+            preOrderTraverse(root,result);
+            int[] arr=new int[result.size()];
+            for(int i=0;i<result.size();i++){
+                arr[i]=result.get(i);
+            }
+            return arr;
+        }
+        public void preOrderTraverse(Node current,ArrayList<Integer>result){
+            if(current==null)return;
+            result.add(current.data);
+            preOrderTraverse(current.left,result);
+            preOrderTraverse(current.right,result);
+        }
 }
+

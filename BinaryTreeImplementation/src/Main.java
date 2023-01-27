@@ -30,14 +30,20 @@ public class Main {
         } else {
             System.out.println("findHeight() test failed. Expected: " + expectedHeight + " but got: " + actualHeight);
         }
-
-
         int[] expectedOrder = new int[] {2, 3, 4, 5, 6, 7, 8};
         int[] actualOrder = tree.inOrderTraverse();
         if (Arrays.equals(expectedOrder, actualOrder)) {
             System.out.println("inOrderTraverse() test passed!");
         } else {
             System.out.println("inOrderTraverse() test failed. Expected: " + Arrays.toString(expectedOrder) + " but got: " + Arrays.toString(actualOrder));
+        }
+
+        int[] expected = new int[] {5, 3, 2, 4, 7, 6, 8};
+        int[] actual = tree.preOrderTraverse();
+        if (Arrays.equals(expected, actual)) {
+            System.out.println("preOrderTraverse() test passed!");
+        } else {
+            System.out.println("preOrderTraverse() test failed. Expected: " + Arrays.toString(expected) + " but got: " + Arrays.toString(actual));
         }
     }
 }
