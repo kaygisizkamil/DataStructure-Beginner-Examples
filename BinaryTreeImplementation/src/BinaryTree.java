@@ -116,5 +116,21 @@ public class BinaryTree {
             postOrderTraverse(current.right, result);
             result.add(current.data);
         }
+    public void breadthFirst(Node root){
+         //   Queue<BinaryTree>binaryTreeQueue=new Queue()
+            if(root==null)return;
+            Queue<Node> treeQueue=new LinkedList<>();
+            treeQueue.offer(root);
+            while(!treeQueue.isEmpty()){
+                Node current=treeQueue.poll();//dequeue out of queue
+                System.out.print(current.data+" ");
+                if(current.left!=null){
+                    treeQueue.offer(current.left);
+                }
+                if(current.right!=null){
+                    treeQueue.offer(current.right);
+                }
+            }
+        }
 }
 
