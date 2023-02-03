@@ -132,5 +132,25 @@ public class BinaryTree {
                 }
             }
         }
+     public int height(Node treeNode){//non recursive method
+                if(treeNode==null)return 0;
+                int height=0;
+                Queue<Node>queue=new LinkedList<>();
+                queue.offer(root);
+                while(!queue.isEmpty()){
+                    int size=queue.size();
+                    height++;
+                        for(int i=0;i<size;i++){
+                            Node node=queue.poll();
+                            if(node.left!=null){
+                                    queue.offer(node.left);
+                            }
+                            if(node.right!=null){
+                                queue.offer(node.right);
+                            }
+                        }
+                        return height;
+                }
+        }
 }
 
